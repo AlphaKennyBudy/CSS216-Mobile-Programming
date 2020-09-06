@@ -1,4 +1,4 @@
-package kz.sdu.assignment1;
+package kz.sdu.assignments;
 
 import org.junit.Test;
 
