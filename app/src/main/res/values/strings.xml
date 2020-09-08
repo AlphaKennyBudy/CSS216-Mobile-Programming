@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">Assignment 1</string>
+    <string name="app_name">Assignment 2</string>
+    <string name="name">Adil</string>
+    <string name="surname">Akhmetov</string>
+    <string name="ID">180103095</string>
+    <string name="button_text">Click me to toggle the info!</string>
 </resources>
