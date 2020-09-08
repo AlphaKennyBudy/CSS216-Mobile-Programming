@@ -4,4 +4,16 @@
     <string name="surname">Akhmetov</string>
     <string name="ID">180103095</string>
     <string name="button_text">Click me to toggle the info!</string>
+
+
+    <string-array name="planets_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
 </resources>
