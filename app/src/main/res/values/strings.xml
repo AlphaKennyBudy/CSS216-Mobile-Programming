@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">Assignment 3</string>
+    <string name="create_label">Please, insert your number of repetition and how much time do you spend to do one</string>
+    <string name="repetitions_input">Number of repetitions: </string>
+    <string name="one_repetition_input">How much time do I spend for one repetition: </string>
+
+    <string name="repetitions_label">How much repetitions you did</string>
+    <string name="timer">Timer</string>
+
+    <string name="start">Let\'s start!</string>
+    <string name="give_up">I give up!</string>
+    <string name="timer_text1">On your marks!</string>
+    <string name="timer_text2">Get set!</string>
+    <string name="timer_text3">GO!</string>
+    <string name="do_it_again">Do it again!</string>
+    <string name="congrats_message">Congratulations! You did %d repetitions in %d seconds!</string>
+    <string name="lost_message">Ohh, you couldn\'t do that. Don\'t despair and try again!</string>
 </resources>
