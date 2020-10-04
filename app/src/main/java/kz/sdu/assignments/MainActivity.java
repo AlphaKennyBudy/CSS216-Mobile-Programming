@@ -15,6 +15,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageView;
@@ -25,6 +26,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             this.choice = 1;
             this.counter = new int[]{1};
             generateCards();
-        }
+    }
 
         spawnCards();
         showCards();
@@ -175,7 +177,7 @@ public class MainActivity extends AppCompatActivity {
                         cardViews.forEach((order, view) -> {
                             view.hideCard();
                         });
-                        cardViews.get(counter[0]).showCard(counter[0]);
+                        Objects.requireNonNull(cardViews.get(counter[0])).showCard(counter[0]);
                         counter[0]++;
                         showCardHandler.postDelayed(this, 2000);
                     }
