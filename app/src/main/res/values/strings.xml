@@ -5,6 +5,14 @@
     <string name="contribute">Contribute</string>
     <string name="search_by_key">Search by key:</string>
     <string name="load_image">Load image</string>
+    <string name="desc">Activities should start with a verb in the form of a command (ex. \'Research ...\', \'Invite ...\', \'Create ...\') Try to keep the activities general and without references to companies or name brand products</string>
+    <string name="agree_desc">Are you agree with this?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="activity">Activity:</string>
+    <string name="type">Type:</string>
+    <string name="participants">Participants:</string>
+    <string name="submit">Submit</string>
 
     <string-array name="types">
         <item>education</item>

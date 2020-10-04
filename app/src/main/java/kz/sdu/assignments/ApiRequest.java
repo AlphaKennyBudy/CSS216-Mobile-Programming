@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.RequiresApi;
 
@@ -17,10 +18,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import io.github.kbiakov.codeview.CodeView;
 
@@ -29,8 +34,10 @@ public class ApiRequest {
     private final String boredAPI = "https://www.boredapi.com/api/";
     private final String waifuAPI = "https://waifu.pics/api/sfw/waifu";
     private RequestQueue queue;
+    private Context context;
 
     public ApiRequest(Context context) {
+        this.context = context;
         queue = Volley.newRequestQueue(context);
     }
 
@@ -104,5 +111,39 @@ public class ApiRequest {
         });
 
         queue.add(jsonObjectRequest);
+    }
+
+    public void postActivity(final String activity, final String type, final int participants) {
+        StringRequest postRequest = new StringRequest(Request.Method.POST, boredAPI + "suggestion",
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        // response
+                        try {
+                            Toast.makeText(context, new JSONObject(response).getString("message"), Toast.LENGTH_SHORT).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        // error
+                        error.printStackTrace();
+                    }
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("activity", activity);
+                params.put("type", type);
+                params.put("participants", String.valueOf(participants));
+
+                return params;
+            }
+        };
+        queue.add(postRequest);
     }
 }
