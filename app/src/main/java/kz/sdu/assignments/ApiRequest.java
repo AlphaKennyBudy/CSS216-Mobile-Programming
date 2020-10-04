@@ -42,7 +42,7 @@ public class ApiRequest {
             @Override
             public void onResponse(JSONObject response) {
                 try {
-                    text.setText(response.getString("activity"));
+                    text.setText(String.format("Let's %s! It requiers only %d people to do!", response.getString("activity"), response.getInt("participants")));
                     getImage(image);
                     Log.d("API_REQUEST", response.toString());
                 } catch (JSONException e) {
@@ -65,7 +65,7 @@ public class ApiRequest {
             public void onResponse(JSONObject response) {
                 try {
                     String url = response.getString("url");
-                    ImageRequest request = new ImageRequest("https://picsum.photos/200",
+                    ImageRequest request = new ImageRequest(url,
                             new Response.Listener<Bitmap>() {
                                 @Override
                                 public void onResponse(Bitmap bitmap) {
