@@ -14,9 +14,7 @@
             android:id="@+id/dashboard_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="3"
-            >
-        </GridLayout>
+            android:columnCount="3"/>
 
     </ScrollView>
 
