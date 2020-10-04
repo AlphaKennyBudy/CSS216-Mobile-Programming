@@ -3,4 +3,18 @@
     <string name="dashboard">Dashboard</string>
     <string name="search">Search</string>
     <string name="contribute">Contribute</string>
+    <string name="search_by_key">Search by key:</string>
+    <string name="load_image">Load image</string>
+
+    <string-array name="types">
+        <item>education</item>
+        <item>recreational</item>
+        <item>social</item>
+        <item>diy</item>
+        <item>charity</item>
+        <item>cooking</item>
+        <item>relaxation</item>
+        <item>music</item>
+        <item>busywork</item>\
+    </string-array>
 </resources>

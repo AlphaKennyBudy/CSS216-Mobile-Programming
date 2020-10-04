@@ -1,7 +1,9 @@
 package kz.sdu.assignments;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.media.Image;
@@ -9,25 +11,16 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.card.MaterialCardView;
-
-import org.json.JSONObject;
-
-import static android.widget.RelativeLayout.*;
 
 public class DashboardActivity extends AppCompatActivity {
     private ApiRequest apiRequest;
@@ -39,6 +32,31 @@ public class DashboardActivity extends AppCompatActivity {
 
         apiRequest = new ApiRequest(this);
 
+        final Intent searchIntent =  new Intent(this, SearchActivity.class);
+        final Intent createIntent = new Intent(this, CreateActivity.class);
+
+        BottomNavigationView navbar = findViewById(R.id.bottom_navigation);
+        navbar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                  case R.id.dashboard_page:
+                      break;
+                  case R.id.search_page:
+                      startActivity(searchIntent);
+                      break;
+                  case R.id.create_page:
+                      startActivity(createIntent);
+                      break;
+                  }
+                return true;
+            }
+        });
+
+        loadCards();
+    }
+
+    private void loadCards() {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 
@@ -75,4 +93,6 @@ public class DashboardActivity extends AppCompatActivity {
             Log.d("VIEW #", "" + i);
         }
     }
+
+
 }

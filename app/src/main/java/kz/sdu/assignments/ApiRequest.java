@@ -22,11 +22,8 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import io.github.kbiakov.codeview.CodeView;
+
 
 public class ApiRequest {
     private final String boredAPI = "https://www.boredapi.com/api/";
@@ -35,6 +32,23 @@ public class ApiRequest {
 
     public ApiRequest(Context context) {
         queue = Volley.newRequestQueue(context);
+    }
+
+    public void searchActivity(String type, final CodeView text) {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, boredAPI + "activity?type=" + type, new JSONObject(), new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                text.setCode(response.toString(), "json");
+                Log.d("API_REQUEST", response.toString());
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        queue.add(jsonObjectRequest);
     }
 
     public void getRandomActivity(final TextView text, final ImageView image) {
@@ -59,7 +73,7 @@ public class ApiRequest {
         queue.add(jsonObjectRequest);
     }
 
-    private void getImage(final ImageView image) {
+    public void getImage(final ImageView image) {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, waifuAPI, new JSONObject(), new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
