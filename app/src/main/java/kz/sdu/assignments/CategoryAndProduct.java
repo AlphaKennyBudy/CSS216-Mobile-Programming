@@ -16,6 +16,17 @@ public class CategoryAndProduct {
         Category cosplay = new Category("Cosplay");
         db.add(cosplay);
         cosplay.addProduct("Akatsuki coat", 3234, R.drawable.akatsuki);
+        cosplay.addProduct("Misa Misa dress", 15978, R.drawable.misa);
+        cosplay.addProduct("Mistuha form", 8713, R.drawable.mitsuha);
+
+        Category figures = new Category("Figures");
+        db.add(figures);
+        figures.addProduct("Itachi figure", 9303, R.drawable.itachi_figure);
+        figures.addProduct("Hidan figure", 7281, R.drawable.hidan_figure);
+
+        Category other = new Category("Other");
+        db.add(other);
+        other.addProduct("Anime case for IPhone", 1504, R.drawable.case_anime);
     }
 
     public List<String> getProductsName(int id) {
