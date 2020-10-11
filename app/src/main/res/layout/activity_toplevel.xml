@@ -19,7 +19,6 @@
 
     <ListView
         android:id="@+id/categories"
-        android:entries="@array/categories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/logo"
