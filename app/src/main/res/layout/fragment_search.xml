@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchActivity">
+    tools:context=".SearchFragment">
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -52,10 +52,10 @@
                 android:textSize="@dimen/ts" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/search_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/search"
-                android:onClick="search"
                 />
 
             <io.github.kbiakov.codeview.CodeView
@@ -72,11 +72,4 @@
         </LinearLayout>
 
     </ScrollView>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/navbar_height"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/bottom_navigation_menu" />
 </RelativeLayout>
