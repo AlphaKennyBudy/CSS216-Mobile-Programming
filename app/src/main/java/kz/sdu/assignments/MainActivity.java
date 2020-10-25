@@ -6,18 +6,26 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
     private ApiRequest apiRequest;
+    private Fragment searchFragment;
+    private Fragment dashboardFragment;
+    private Fragment createFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        loadFragment(new DashboardFragment(this));
+        searchFragment = new SearchFragment(this);
+        dashboardFragment = new DashboardFragment(this);
+        createFragment = new CreateFragment();
+
+        loadFragment(dashboardFragment);
 
         BottomNavigationView navbar = findViewById(R.id.bottom_navigation);
 
@@ -39,17 +47,30 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         Fragment fragment = null;
-                switch (item.getItemId()) {
-                  case R.id.dashboard_page:
-                      fragment = new DashboardFragment(this);
-                      break;
-                  case R.id.search_page:
-                      fragment = new SearchFragment(this);
-                      break;
-                  case R.id.create_page:
-                      fragment = new CreateFragment(this);
-                      break;
-                  }
+        switch (item.getItemId()) {
+            case R.id.dashboard_page:
+                fragment = dashboardFragment;
+                break;
+            case R.id.search_page:
+                fragment = searchFragment;
+                break;
+            case R.id.create_page:
+                fragment = createFragment;
+                break;
+        }
         return loadFragment(fragment);
     }
+
+//    @Override
+//    public void onSaveInstanceState(Bundle outState) {
+//        super.onSaveInstanceState(outState);
+//        getSupportFragmentManager().putFragment(outState, "myfragment", searchFragment);
+//    }
+//
+//    @Override
+//    public void onRestoreInstanceState(Bundle inState) {
+//        Toast.makeText(this, "Loading fragment", Toast.LENGTH_SHORT).show();
+//        searchFragment = getSupportFragmentManager().getFragment(inState, "myfragment");
+//    }
+
 }
